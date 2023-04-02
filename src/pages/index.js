@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import { Box, Text, Button, Image, Icon, chakra, Stack } from "@chakra-ui/react";
+
+import Navbar from "@/pages/components/header.js";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,109 +15,134 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+      <main>
+        <Box px={8} py={5} mx="auto">
+          <Navbar />
+          <Box
+            w={{
+              base: "full",
+              md: 11 / 12,
+              xl: 9 / 12,
+            }}
+            mx="auto"
+            textAlign={{
+              base: "left",
+              md: "center",
+            }}
+          >
+            <chakra.h1
+              mb={6}
+              fontSize={{
+                base: "4xl",
+                md: "6xl",
+              }}
+              fontWeight="bold"
+              lineHeight="none"
+              letterSpacing={{
+                base: "normal",
+                md: "tight",
+              }}
+              color="gray.900"
+              _dark={{
+                color: "gray.100",
+              }}
             >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
+              Generate{" "}
+              <Text
+                display={{
+                  base: "block",
+                  lg: "inline",
+                }}
+                w="full"
+                bgClip="text"
+                bgGradient="linear(to-r, green.400,purple.500)"
+                fontWeight="extrabold"
+              >
+                story and story-book
+              </Text>{" "}
+              in minutes!
+            </chakra.h1>
+            <chakra.p
+              px={{
+                base: 0,
+                lg: 24,
+              }}
+              mb={6}
+              fontSize={{
+                base: "lg",
+                md: "xl",
+              }}
+              color="gray.600"
+              _dark={{
+                color: "gray.300",
+              }}
+            >
+              Hellonext is a feature voting software where you can allow your users to
+              vote on features, publish roadmap, and complete your customer feedback
+              loop.
+            </chakra.p>
+            <Stack
+              direction={{
+                base: "column",
+                sm: "row",
+              }}
+              mb={{
+                base: 4,
+                md: 8,
+              }}
+              spacing={2}
+              justifyContent={{
+                sm: "left",
+                md: "center",
+              }}
+            >
+              <Button
+                as="a"
+                colorScheme="gray"
+                display="inline-flex"
+                alignItems="center"
+                justifyContent="center"
+                w={{
+                  base: "full",
+                  sm: "auto",
+                }}
+                mb={{
+                  base: 2,
+                  sm: 0,
+                }}
+                size="lg"
+                cursor="pointer"
+                href='/form'
+              >
+                Book a Demo
+                <Icon boxSize={4} ml={1} viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fillRule="evenodd"
+                    d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
+                    clipRule="evenodd"
+                  />
+                </Icon>
+              </Button>
+            </Stack>
+          </Box>
+          <Box
+            w={{
+              base: "full",
+              md: 10 / 12,
+            }}
+            mx="auto"
+            mt={20}
+            textAlign="center"
+          >
             <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
+              w="full"
+              rounded="lg"
+              shadow="2xl"
+              src="https://kutty.netlify.app/hero.jpg"
+              alt="Hellonext feedback boards software screenshot"
             />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+          </Box>
+        </Box>;
       </main>
     </>
   )
