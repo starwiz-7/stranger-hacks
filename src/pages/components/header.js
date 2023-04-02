@@ -1,6 +1,7 @@
 import {
     Box,
-    Flex
+    Flex,
+    chakra
   } from '@chakra-ui/react';
   
   
@@ -17,12 +18,7 @@ import {
           align={'center'}
         >
           <Flex flex={{ base: 1 }} justify={{ md: 'start' }}>
-            <img
-              src="https://kutty.netlify.app/hero.jpg"
-              height="10"
-              width="150"
-              alt="logo"
-            ></img>
+            <chakra.h3 fontWeight={'bold'} fontSize='xl'> StanLee GPT</chakra.h3>
           </Flex>
         </Flex>
       </Box>

@@ -1,6 +1,8 @@
 import { FormControl, FormLabel, Input, Textarea, Select, Button, chakra } from "@chakra-ui/react";
 import styles from "@/styles/Home.module.css"
 import { useState } from "react";
+import axios from "axios";
+import { useRouter } from 'next/navigation';
 
 function Form() {
 
@@ -8,10 +10,16 @@ function Form() {
     const [description, setDescription] = useState("");
     const [genre, setGenre] = useState();
 
-    const handleSubmit = () => {
-        // event.preventDefault();
-        // Handle form submission
-        console.log(description, genre, title)
+    const {push} = useRouter();
+
+    const handleSubmit = async () => {
+        const result = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/story/create`, {
+            title,
+            description,
+            genre
+        });
+
+        push(`/story?id=${result.data._id}`)
     };
 
     return (
@@ -54,7 +62,7 @@ function Form() {
                     </Select>
                 </FormControl>
 
-                <Button mt={4} colorScheme="blue" type="submit" onClick={() => handleSubmit()}>
+                <Button mt={4} colorScheme="blue" onClick={() => handleSubmit()}>
                     Submit
                 </Button>
             </form>
