@@ -98,7 +98,7 @@ function StoryGenerator() {
                                                     {curData.directions}
                                                 </chakra.p>
                                                 {
-                                                    idx === data.length - 1 ?
+                                                    idx === data.length - 1 && idx !== 3 ?
                                                         loading ? <Spinner /> :
                                                             <Flex>
                                                                 <Button onClick={() => directionHandler(1)}>
