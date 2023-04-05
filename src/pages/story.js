@@ -17,6 +17,8 @@ function StoryGenerator() {
     const { id } = router.query;
     const { push } = router1();
 
+    let apiCount = 0;
+
     const newPromptCall = async (sceneNo, direction = 1) => {
         try {
             setLoading(true);
@@ -39,10 +41,17 @@ function StoryGenerator() {
 
     useEffect(() => {
         (async () => {
+            console.log('infrr')
             try {
-                const result = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/story/${id}`);
-                setTitle(result.data.title);
-                await newPromptCall(1);
+                apiCount++;
+                if(apiCount === 1) {
+                    console.log('infrdeder')
+                    const result = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/story/${id}`);
+                    setTitle(result.data.title);
+                    apiCount++;
+                    await newPromptCall(1);
+                }
+                
             }
             catch (error) {
                 setError(true)
@@ -98,7 +107,7 @@ function StoryGenerator() {
                                                     {curData.directions}
                                                 </chakra.p>
                                                 {
-                                                    idx === data.length - 1 && idx !== 3 ?
+                                                    idx === data.length - 1 ?
                                                         loading ? <Spinner /> :
                                                             <Flex>
                                                                 <Button onClick={() => directionHandler(1)}>
@@ -126,7 +135,7 @@ function StoryGenerator() {
                         }
 
                         {
-                            data.length === 4 ? <Button onClick={() => publish()}>Generate Storybook</Button> : <></>
+                            data.length >= 1 && !loading ? <Button onClick={() => publish()}>Generate Storybook</Button> : <></>
                         }
                     </>
             }
